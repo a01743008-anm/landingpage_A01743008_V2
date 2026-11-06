@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecatex Aerospace | Misión Lunar 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar con Navegación por Secciones -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo-brand" onclick="showSection('hero-section')">
+                <div class="logo-emblem"></div>
+                <div class="brand-text">
+                    <span class="brand-title">TECATEX</span>
+                    <span class="brand-subtitle">AEROSPACE</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="javascript:void(0)" onclick="showSection('cohete-section')">🚀 Cohete</a>
+                <a href="javascript:void(0)" onclick="showSection('estatica-section')">🔥 Prueba Estática</a>
+                <a href="javascript:void(0)" onclick="showSection('video-section')">🎬 Video Despegue</a>
+                <a href="javascript:void(0)" onclick="showSection('equipo-section')">👨‍🚀 Equipo</a>
+            </nav>
+            <div class="status-badge">
+                <span class="status-dot"></span> MISIÓN ACTIVA
+            </div>
+        </div>
+    </header>
+
+    <!-- Canvas para el fondo continuo de estrellas -->
+    <canvas id="space-canvas"></canvas>
+
+    <!-- MAIN PAGE / HERO SECTION -->
+    <main id="hero-section" class="page-section active-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-tag">PROYECTO FINAL • SINALOA 2026</span>
+                <h1>RUMBO A LA LUNA CON TECATEX AEROSPACE</h1>
+                <p>Plataforma oficial del prototipo aeroespacial TECATEX-1. Explora el desarrollo de propulsión, las pruebas en banco estático y el registro del lanzamiento.</p>
+                
+                <!-- Botones de Acceso Rápido a las 4 Secciones Principales -->
+                <div class="quick-nav-grid">
+                    <button class="nav-btn" onclick="showSection('cohete-section')">
+                        <span class="icon">🚀</span>
+                        <span class="label">Info del Cohete</span>
+                    </button>
+                    <button class="nav-btn" onclick="showSection('estatica-section')">
+                        <span class="icon">🔥</span>
+                        <span class="label">Prueba Estática</span>
+                    </button>
+                    <button class="nav-btn" onclick="showSection('video-section')">
+                        <span class="icon">🎬</span>
+                        <span class="label">Video Despegue</span>
+                    </button>
+                    <button class="nav-btn" onclick="showSection('equipo-section')">
+                        <span class="icon">👨‍🚀</span>
+                        <span class="label">Miembros</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Luna Fotorrealista y Botella Orbitando / Llegando -->
+            <div class="space-scene-wrapper">
+                <!-- Luna fotorrealista en HTML5 Canvas / CSS Shader -->
+                <div class="realistic-moon">
+                    <div class="moon-texture"></div>
+                    <div class="moon-shadow"></div>
+                </div>
+
+                <!-- Botella en trayectoria de llegada a la Luna con Estela de Gas/Propulsión -->
+                <div class="space-bottle-rocket">
+                    <div class="bottle-glow"></div>
+                    <svg class="bottle-svg" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Corcholata -->
+                        <rect x="40" y="5" width="20" height="10" rx="2" fill="#FFFFFF" />
+                        <!-- Cuello -->
+                        <path d="M 42 15 L 58 15 L 58 70 L 42 70 Z" fill="#E0E0E0" />
+                        <!-- Cuerpo -->
+                        <path d="M 42 70 C 30 90 20 110 20 140 L 20 270 C 20 285 32 295 50 295 C 68 295 80 285 80 270 L 80 140 C 80 110 70 90 58 70 Z" fill="#1A1A1A" stroke="#FFFFFF" stroke-width="3" />
+                        <!-- Etiqueta -->
+                        <rect x="22" y="150" width="56" height="70" fill="#0B0B0B" stroke="#FFFFFF" stroke-width="2" />
+                        <text x="50" y="190" font-family="'Exo 2', sans-serif" font-weight="800" font-size="12" fill="#FFFFFF" text-anchor="middle">TECATEX</text>
+                        <!-- Reflejo Cristal -->
+                        <path d="M 28 140 L 28 260 C 28 270 32 275 35 275 C 32 270 32 250 32 240 L 32 140 C 32 120 40 100 48 80 L 44 80 C 38 98 28 120 28 140 Z" fill="#FFFFFF" opacity="0.8" />
+                    </svg>
+                    <!-- Estela de propulsión -->
+                    <div class="exhaust-trail"></div>
+                </div>
+
+                <!-- Temporizador Oficial de Despegue -->
+                <div class="hero-countdown-card">
+                    <div class="countdown-header">
+                        <span>⏱️ CONTRARRELOJ DE DESPEGUE</span>
+                        <span class="badge-code">TA-COUNTDOWN</span>
+                    </div>
+                    <div class="countdown-timer">
+                        <div class="time-box"><span class="number" id="days">04</span><span class="unit">DÍAS</span></div>
+                        <div class="time-box"><span class="number" id="hours">12</span><span class="unit">HRS</span></div>
+                        <div class="time-box"><span class="number" id="minutes">45</span><span class="unit">MIN</span></div>
+                        <div class="time-box"><span class="number" id="seconds">30</span><span class="unit">SEG</span></div>
+                    </div>
+                    <div class="countdown-footer">
+                        <span>ESTADO: TELEMETRÍA EN LÍNEA</span>
+                        <span class="text-green">● NORMAL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN 1: INFO DEL COHETE -->
+    <section id="cohete-section" class="page-section hidden-section">
+        <div class="container section-padding">
+            <button class="back-btn" onclick="showSection('hero-section')">← Volver al Inicio</button>
+            <div class="section-title">
+                <h2>🚀 ESPECIFICACIONES DEL COHETE TECATEX-1</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>Arquitectura del Prototipo</h3>
+                    <p>El cohete TECATEX-1 ha sido optimizado estructuralmente para minimizar la masa seca y maximizar la altura del apogeo cinemático.</p>
+                    <ul class="spec-list">
+                        <li><strong>Longitud Total:</strong> 1.85 metros</li>
+                        <li><strong>Diámetro de Fuselaje:</strong> 102 mm</li>
+                        <li><strong>Material del Cuerpo:</strong> Fibra de carbono monocasco</li>
+                        <li><strong>Masa Total al Despegue:</strong> 12.4 kg</li>
+                        <li><strong>Apogeo Objetivo:</strong> 3,000 m sobre el nivel del suelo</li>
+                    </ul>
+                </div>
+                <div class="media-placeholder">
+                    <div class="placeholder-icon">📐</div>
+                    <p>Render 3D y Planos Estructurales del Cohete TECATEX-1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: PRUEBA ESTÁTICA -->
+    <section id="estatica-section" class="page-section hidden-section">
+        <div class="container section-padding">
+            <button class="back-btn" onclick="showSection('hero-section')">← Volver al Inicio</button>
+            <div class="section-title">
+                <h2>🔥 BANCO DE PRUEBAS ESTÁTICAS</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>Validación de Empuje de Motor</h3>
+                    <p>Registro analítico de la prueba de encendido en banco. Evaluación de la curva de empuje N vs Tiempo (s) e integridad de la tobera cónica de grafito.</p>
+                    <div class="telemetry-box">
+                        <div class="t-item"><span>Empuje Máximo:</span> <strong>620 N</strong></div>
+                        <div class="t-item"><span>Tiempo de Combustión:</span> <strong>3.8 s</strong></div>
+                        <div class="t-item"><span>Presión en Cámara:</span> <strong>4.2 MPa</strong></div>
+                        <div class="t-item"><span>Resultado:</span> <strong class="text-green">PRUEBA EXITOSA</strong></div>
+                    </div>
+                </div>
+                <div class="media-placeholder">
+                    <div class="placeholder-icon">📊</div>
+                    <p>Video o Gráfica de Telemetría de la Prueba Estática en Banco</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: VIDEO DEL DESPEGUE -->
+    <section id="video-section" class="page-section hidden-section">
+        <div class="container section-padding">
+            <button class="back-btn" onclick="showSection('hero-section')">← Volver al Inicio</button>
+            <div class="section-title">
+                <h2>🎬 REGISTRO AUDIOVISUAL DEL DESPEGUE</h2>
+                <div class="line"></div>
+            </div>
+            <div class="video-container-main">
+                <div class="media-placeholder video-placeholder">
+                    <div class="placeholder-icon">▶</div>
+                    <h3>REPRODUCTOR DE VIDEO DE LANZAMIENTO</h3>
+                    <p>Aquí se reproducirá el video HD del despegue y recuperación por paracaídas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: MIEMBROS DEL EQUIPO (GAFETES) -->
+    <section id="equipo-section" class="page-section hidden-section">
+        <div class="container section-padding">
+            <button class="back-btn" onclick="showSection('hero-section')">← Volver al Inicio</button>
+            <div class="section-title">
+                <h2>👨‍🚀 INTEGRANTES Y TRIPULACIÓN</h2>
+                <div class="line"></div>
+            </div>
+            <div class="crew-grid">
+                <!-- Gafete 1 -->
+                <div class="badge-card">
+                    <div class="badge-header">
+                        <div class="badge-logo-mini"></div>
+                        <span class="badge-tag">CREW MEMBER</span>
+                    </div>
+                    <div class="badge-body">
+                        <div class="badge-avatar">👩‍🔬</div>
+                        <div class="badge-info">
+                            <h4>Dr. Amelia V. Ramirez</h4>
+                            <span class="role">Ingeniería de Propulsión</span>
+                            <span class="id-number">ID: TA-001</span>
+                        </div>
+                    </div>
+                    <div class="badge-footer">
+                        <span>AUTORIZACIÓN DE ACCESO</span>
+                        <div class="qr-placeholder"></div>
+                    </div>
+                </div>
+
+                <!-- Gafete 2 -->
+                <div class="badge-card">
+                    <div class="badge-header">
+                        <div class="badge-logo-mini"></div>
+                        <span class="badge-tag">CREW MEMBER</span>
+                    </div>
+                    <div class="badge-body">
+                        <div class="badge-avatar">👨‍💻</div>
+                        <div class="badge-info">
+                            <h4>Ing. Daniel Gámez</h4>
+                            <span class="role">Aviónica y Telemetría</span>
+                            <span class="id-number">ID: TA-002</span>
+                        </div>
+                    </div>
+                    <div class="badge-footer">
+                        <span>AUTORIZACIÓN DE ACCESO</span>
+                        <div class="qr-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 TECATEX AEROSPACE. Todos los derechos reservados. Proyecto Final de Ingeniería.</p>
+            <span class="footer-tag">SINALOA, MÉXICO</span>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript para Navegación entre Secciones, Temporizador y Fondo Espacial -->
+    <script src="script.js"></script>
+</body>
+</html>

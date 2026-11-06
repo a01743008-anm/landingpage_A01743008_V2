@@ -1,0 +1,605 @@
+/* Variables de Identidad Visual Tecatex Aerospace */
+:root {
+    --negro-espacial: #0B0B0B;
+    --gris-cosmico: #2E2E2E;
+    --gris-medio: #1A1A1A;
+    --gris-borde: #383838;
+    --blanco-lunar: #FFFFFF;
+    --texto-secundario: #A0A0A0;
+    --font-heading: 'Exo 2', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--negro-espacial);
+    color: var(--blanco-lunar);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Manejo de Vistas / Secciones Dinámicas */
+.page-section {
+    min-height: 90vh;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.active-section {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Headers & Navbar */
+.navbar {
+    background: rgba(11, 11, 11, 0.92);
+    border-bottom: 1px solid var(--gris-borde);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logo-emblem {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid var(--blanco-lunar);
+    background: radial-gradient(circle, #2e2e2e 0%, #0b0b0b 100%);
+    position: relative;
+}
+
+.logo-emblem::after {
+    content: '🚀';
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.brand-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--texto-secundario);
+}
+
+.nav-links a {
+    color: var(--texto-secundario);
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blanco-lunar);
+}
+
+.status-badge {
+    background: var(--gris-cosmico);
+    border: 1px solid var(--gris-borde);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #00FF66;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00FF66;
+}
+
+/* Canvas del Espacio de Fondo */
+#space-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 150px 0 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, rgba(30, 30, 30, 0.4) 0%, rgba(11, 11, 11, 0.9) 80%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-tag {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--texto-secundario);
+    font-weight: 700;
+}
+
+.hero-text h1 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin: 15px 0 20px;
+    font-weight: 800;
+}
+
+.hero-text p {
+    color: var(--texto-secundario);
+    margin-bottom: 30px;
+}
+
+/* Quick Navigation Grid Buttons */
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.nav-btn {
+    background: rgba(26, 26, 26, 0.85);
+    border: 1px solid var(--gris-borde);
+    color: var(--blanco-lunar);
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--gris-cosmico);
+    border-color: var(--blanco-lunar);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn .icon {
+    font-size: 1.4rem;
+}
+
+/* Escena Espacial: Luna Fotorrealista y Botella Cohete */
+.space-scene-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Luna Fotorrealista */
+.realistic-moon {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #D0D0D0 25%, #707070 55%, #1A1A1A 85%, #050505 100%);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.25), inset -20px -20px 40px rgba(0,0,0,0.95);
+    overflow: hidden;
+}
+
+.moon-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 45% 40%, rgba(30,30,30,0.7) 0%, transparent 18%),
+        radial-gradient(circle at 65% 60%, rgba(20,20,20,0.8) 0%, transparent 22%),
+        radial-gradient(circle at 30% 70%, rgba(40,40,40,0.6) 0%, transparent 15%),
+        radial-gradient(circle at 75% 30%, rgba(15,15,15,0.75) 0%, transparent 14%);
+    border-radius: 50%;
+}
+
+.moon-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset -25px -10px 40px rgba(0,0,0,0.9);
+}
+
+/* Botella Cohete en Vuelo Hacia la Luna */
+.space-bottle-rocket {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 45px;
+    height: 130px;
+    z-index: 10;
+    transform: rotate(-35deg);
+    animation: orbitArrival 6s ease-in-out infinite alternate;
+}
+
+.bottle-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
+
+.exhaust-trail {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 35px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(200,200,200,0.4) 50%, transparent 100%);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: exhaustPulse 0.3s infinite alternate;
+}
+
+@keyframes orbitArrival {
+    0% { transform: translate(0px, 0px) rotate(-35deg); }
+    100% { transform: translate(-25px, 20px) rotate(-28deg); }
+}
+
+@keyframes exhaustPulse {
+    0% { opacity: 0.6; height: 30px; }
+    100% { opacity: 1; height: 42px; }
+}
+
+/* Temporizador */
+.hero-countdown-card {
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid var(--gris-borde);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.countdown-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--texto-secundario);
+    border-bottom: 1px solid var(--gris-borde);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.badge-code {
+    background: var(--gris-cosmico);
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: var(--blanco-lunar);
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: space-around;
+    background: var(--negro-espacial);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--gris-borde);
+    margin-bottom: 15px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-box .number {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.time-box .unit {
+    font-size: 0.6rem;
+    color: var(--texto-secundario);
+    letter-spacing: 1px;
+}
+
+.countdown-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+    font-weight: 600;
+}
+
+.text-green { color: #00FF66; font-weight: 700; }
+
+/* Estilos de Secciones Interiores */
+.section-padding {
+    padding: 120px 0 80px;
+}
+
+.back-btn {
+    background: var(--gris-cosmico);
+    border: 1px solid var(--gris-borde);
+    color: var(--blanco-lunar);
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.back-btn:hover {
+    background: var(--blanco-lunar);
+    color: var(--negro-espacial);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.section-title .line {
+    width: 60px;
+    height: 3px;
+    background: var(--blanco-lunar);
+    margin: 10px auto 0;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.info-card {
+    background: var(--gris-medio);
+    border: 1px solid var(--gris-borde);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.info-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.spec-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.spec-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gris-borde);
+    font-size: 0.9rem;
+}
+
+.telemetry-box {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.t-item {
+    display: flex;
+    justify-content: space-between;
+    background: var(--negro-espacial);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    border: 1px solid var(--gris-borde);
+}
+
+.media-placeholder {
+    background: var(--gris-medio);
+    border: 2px dashed var(--gris-borde);
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--texto-secundario);
+}
+
+.video-container-main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.video-placeholder {
+    padding: 100px 20px;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* Gafetes de Integrantes */
+.crew-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.badge-card {
+    background: linear-gradient(145deg, #1f1f1f, #0b0b0b);
+    border: 1px solid var(--gris-borde);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.badge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gris-borde);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.badge-logo-mini {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--blanco-lunar);
+}
+
+.badge-tag {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.badge-body {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.badge-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gris-cosmico);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    border: 2px solid var(--gris-borde);
+}
+
+.badge-info h4 {
+    font-size: 1.1rem;
+}
+
+.badge-info .role {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+.badge-info .id-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.badge-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: var(--texto-secundario);
+    border-top: 1px solid var(--gris-borde);
+    padding-top: 10px;
+}
+
+.qr-placeholder {
+    width: 25px;
+    height: 25px;
+    background: var(--blanco-lunar);
+    border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+    background: #050505;
+    border-top: 1px solid var(--gris-borde);
+    padding: 30px 0;
+    font-size: 0.8rem;
+    color: var(--texto-secundario);
+    margin-top: 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content, .grid-2, .crew-grid, .quick-nav-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-links { display: none; }
+}
